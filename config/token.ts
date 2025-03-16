@@ -4,7 +4,7 @@ import jwt, { Secret } from "jsonwebtoken";
 import fs from "fs";
 import { IAuthOUser } from "../types/Auth0Token";
 class TokenManager {
-  private secretKey: Secret;
+  private secretKey: any;
   private publicKeyFilePath: string = "public-key.key";
   private authkeys: string;
   constructor() {
@@ -15,7 +15,7 @@ class TokenManager {
     this.authkeys = fs.readFileSync(this.publicKeyFilePath, "utf8");
   }
 
-  generateToken(payload: Record<string, any>, expiresIn: string): string {
+  generateToken(payload: Record<string, any>, expiresIn: any): string {
     console.log(payload);
     return jwt.sign(payload, this.secretKey, { expiresIn });
   }

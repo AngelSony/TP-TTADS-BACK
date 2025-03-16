@@ -22,7 +22,8 @@ export class OrderRepository implements IOrderRepository<IOrder> {
   }
 
   public async delete(item: { id: string }): Promise<IOrder | undefined> {
-    return (await Order.findOneAndDelete({ _id: item.id })) || undefined;
+    /* return (await Order.findOneAndDelete({ _id: item.id })) || undefined; */
+    return undefined
   }
 
   public async updateAll(
