@@ -10,8 +10,6 @@ const tokenManager = new TokenManager();
 
 export const loginController = {
 
-  // AGREGAR ID PARA LOS SELLER CUANDO SE HACE LOGIN CON AUTH
-
   loginWithAuth0: async (req: Request, res: Response) => {
     const { id_token } = req.body;
     const auth0User = tokenManager.decodeAuth0Token(id_token);
@@ -61,13 +59,13 @@ export const loginController = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        return res.status(404).json({ error: "User not found" });
+        return res.status(404).json({ error: "invalid_auth" });
       }
 
       const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (!isPasswordValid) {
-        return res.status(401).json({ error: "Incorrect password" });
+        return res.status(401).json({ error: "invalid_auth" });
       }
 
       const userResponse: IUserResponse = {

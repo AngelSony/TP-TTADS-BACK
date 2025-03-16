@@ -2,15 +2,10 @@ import mongoose, { Connection } from "mongoose";
 
 console.log("a");
 // URL de conexión a la base de datos. Cambia esto según tu configuración.
-const dbURL =
-  "mongodb+srv://SolidSnake:gRpu6SxPSWOLTIS6@cluster0.0lyn4ju.mongodb.net/MarketPlace";
-
 // Configuración de la conexión a la base de datos
-mongoose.connect(dbURL, {
-  //useNewUrlParser: true,
-  //useUnifiedTopology: true,
-});
-// Manejo de eventos de conexión
+
+mongoose.connect('mongodb://admin:password@localhost:27017/MarketPlace?authSource=admin').then(() => console.log('Conectado a MongoDB Local'))
+.catch(err => console.error('Error al conectar', err));
 const db: Connection = mongoose.connection;
 
 db.on("error", console.error.bind(console, "Error de conexión a MongoDB:"));

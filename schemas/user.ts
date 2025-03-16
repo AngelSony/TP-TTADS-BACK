@@ -7,7 +7,7 @@ const UserTypeSchema = z
   .enum(["Admin", "User", "Seller"])
   .refine((value) => ["Admin", "User", "Seller"].includes(value), {
     message: "User must be a valid type",
-  });
+  }).default("User");
 
 const UserStateSchema = z
   .enum(["Active", "Banned", "Deactivate"])
