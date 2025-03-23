@@ -36,12 +36,7 @@ const userController = {
     try {
       const result = validateUser(req.body);
       if (!result.success) {
-        const errorMessage = result.error?.message;
-        if (errorMessage) {
-          return res.status(400).json({ error: JSON.parse(errorMessage) });
-        } else {
-          return res.status(400).json({ error: "Unexpected Error" });
-        }
+        return res.status(400).json({ error: result.error });
       }
 
       const saltRounds = 10;
@@ -49,10 +44,11 @@ const userController = {
         result.data.password,
         saltRounds
       );
+
       result.data.password = hashedPassword;
       const user: IUser | undefined = await userRepository.add(result.data);
       if (!user) {
-        return res.status(500).json({ error: "Error creating user." });
+        return res.status(500).json({ error: "could_not_create_user" });
       }
 
       const responseData: any = {
@@ -62,7 +58,7 @@ const userController = {
         state: user.state,
         address: user.address,
       };
-      res.status(201).json({ message: "User created", data: responseData });
+      res.status(201).json({ message: "user_created", data: responseData });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "An unexpected error occurred." });

@@ -4,6 +4,7 @@ import { User } from "../models/database/user.js";
 import TokenManager from "../config/token.js";
 import { UserRepository } from "../repository/userRepository.js";
 import { ILoginAuth0 } from "../types/Auth0Token.js";
+import { validateLogin } from "../schemas/login.js";
 
 const userRepository = new UserRepository();
 const tokenManager = new TokenManager();
@@ -56,6 +57,10 @@ export const loginController = {
     try {
       const { email, password } = req.body;
 
+      const result = validateLogin({ email, password });
+      if (!result.success) {
+        return res.status(400).json({ error: "invalid_params" });
+      }
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -79,9 +84,9 @@ export const loginController = {
 
       const token = tokenManager.generateToken(userResponse, "3h");
 
-      res.status(200).json(token);
+      res.status(200).json({token:token});
     } catch (error) {
-      res.status(500).json({ error: "Error during login" });
+      res.status(500).json({ error: "unexpected_login_error" });
     }
   },
 };

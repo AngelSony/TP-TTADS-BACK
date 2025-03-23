@@ -1,11 +1,11 @@
 import { z, ZodError } from "zod";
 
-type UserType = "Admin" | "User" | "Seller";
+type UserType =  "User" | "Seller";
 type UserState = "Active" | "Banned" | "Deactivate";
 
 const UserTypeSchema = z
-  .enum(["Admin", "User", "Seller"])
-  .refine((value) => ["Admin", "User", "Seller"].includes(value), {
+  .enum(["User", "Seller"])
+  .refine((value) =>["User", "Seller"].includes(value), {
     message: "User must be a valid type",
   }).default("User");
 

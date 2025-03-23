@@ -34,12 +34,12 @@ const ProductController = {
     try {
       const result = validateProduct(req.body);
       if (!result.success) {
-        // 422 Unprocessable Entity
         return res
           .status(400)
           .json({ error: JSON.parse(result.error.message) });
       }
-      const serviceResult = await ProductService.create(req.body);
+      const order = { ...req.body, seller_id: req.user?._id };
+      const serviceResult = await ProductService.create(order);
       if (!serviceResult.success) {
         return res.status(400).json({ error: serviceResult.message });
       }

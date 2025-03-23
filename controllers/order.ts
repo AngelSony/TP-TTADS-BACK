@@ -1,7 +1,6 @@
 import { Order, IOrderDocument } from "../models/database/order.js";
 import { Request, Response } from "express";
 import { validateOrder } from "../schemas/order.js";
-import IOrder from "../types/IOrder.js";
 
 const OrderController = {
   createOrder: async (req: Request, res: Response) => {

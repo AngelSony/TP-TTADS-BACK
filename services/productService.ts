@@ -20,13 +20,7 @@ export const ProductService = {
      * @param {stock}
      * @param {img}
      */
-    const result = await validateSeller(params.seller);
-    if (result instanceof Error) {
-      return {
-        success: false,
-        message: result.message,
-      };
-    }
+
     try {
       const addedProduct = await productRepository.add(params);
       return {
@@ -42,22 +36,4 @@ export const ProductService = {
   },
 };
 
-const validateSeller = async (id: string): Promise<boolean | Error> => {
-  try {
-    const user: ISeller = (await userRepository.findOne({ id })) as ISeller;
-    if (!user) {
-      return new Error("Seller not found");
-    }
-    if (user.type !== "Seller") {
-      return new Error("Seller invalid type");
-    }
-    if (user.state !== "Active") {
-      return new Error("Seller invalid status");
-    }
-    return true;
-  } catch (error) {
-    console.log(error);
 
-    throw new Error("An error occurred");
-  }
-};
