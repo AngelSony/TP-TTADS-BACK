@@ -1,7 +1,7 @@
 import { PaymentType } from "../models/database/payment_type.js";
 import { validatePaymentType } from "../schemas/payment_type.js";
 import { Request, Response } from "express";
-import { PaymentTypeRepository } from "./../repository/payment_typeRepository.js";
+import { PaymentTypeRepository } from "../repository/payment_type_repository.js";
 
 const paymentTypeRepository = new PaymentTypeRepository();
 
@@ -24,7 +24,7 @@ const paymenttypeController = {
       }
       res.status(200).json(paymentType);
     } catch (error) {
-      res.status(500).json({ error: "Payment Type not found" });
+      res.status(500).json({ error: "internal_server_error" });
     }
   },
 
@@ -48,7 +48,7 @@ const paymenttypeController = {
         .status(201)
         .json({ message: "Payment Type created", data: savedPaymentType });
     } catch (error) {
-      res.status(500).json({ error: "Payment Type creation error" });
+      res.status(500).json({ error: "internal_server_error" });
     }
   },
 
@@ -59,24 +59,27 @@ const paymenttypeController = {
         req.body,
       );
       if (!updatedPaymentType) {
-        return res.status(404).json({ error: "Payment Type not found" });
+        return res.status(404).json({ error: "payment_type_not_found" });
       }
       res.status(200).json(updatedPaymentType);
     } catch (error) {
-      res.status(500).json({ error: "Error updating Payment Type" });
+      res.status(500).json({ error: "internal_server_error" });
     }
   },
 
   deletePaymentTypeById: async (req: Request, res: Response) => {
     try {
       const id = req.params.id;
+      if (!id) {
+        return res.status(400).json({ error: "id_is_requiered" });
+      }
       const paymentTypeDeleted = await paymentTypeRepository.delete({ id });
       if (!paymentTypeDeleted) {
         return res.status(404).json({ error: "Payment Type not found" });
       }
-      res.status(204).send();
+      res.status(200).json({ message: "payment_type_deleted", data: paymentTypeDeleted });
     } catch (error) {
-      res.status(500).json({ error: "Error deleting Payment Type" });
+      res.status(500).json({ error: "internal_server_error" });
     }
   },
 };

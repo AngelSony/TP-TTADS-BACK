@@ -11,26 +11,29 @@ interface User {
 
 declare module 'express' {
   export interface Request {
-    user?: User;  
+    user?: User;
   }
-} 
+}
 
 const key: string | undefined = process.env.SECRET_KEY;
 
 async function isUser(req: Request, res: Response, next: NextFunction) {
   try {
     const token = req.header('Authorization');
+    if (!token) {
+      return res.status(403).json({ message: 'token_not_found' });
+    }
     const realToken = await isAuth(token!);
     const decode: any = jwt.verify(realToken, key!);
 
-    if(decode.type != 'User'){
-      return res.status(403).json({message: 'unauthorized'});
+    if (decode.type != 'User') {
+      return res.status(403).json({ message: 'unauthorized' });
     }
     req.user = decode;
     next();
   } catch (err: any) {
     console.log(err);
-    return res.status(403).json({message: 'unauthorized'});
+    return res.status(403).json({ message: 'unauthorized' });
   }
 }
 
@@ -38,31 +41,38 @@ async function isUser(req: Request, res: Response, next: NextFunction) {
 async function isSeller(req: Request, res: Response, next: NextFunction) {
   try {
     const token = req.header('Authorization');
+    if (!token) {
+      return res.status(403).json({ message: 'token_not_found' });
+    }
     const realToken = await isAuth(token!);
     const decode: any = jwt.verify(realToken, key!);
-    if(decode.role != 'seller'){
-      return res.status(403).json({message: 'unauthorized'});
+    if (decode.type != 'Seller') {
+      return res.status(401).json({ message: 'unauthorized' });
     }
     return next();
   } catch (error) {
-    return res.status(500).json({message: 'internal_error'});
+    return res.status(500).json({ message: 'internal_error' });
   }
-  
+
 }
 
 async function isAdmin(req: Request, res: Response, next: NextFunction) {
   try {
     const token = req.header('Authorization');
+    if (!token) {
+      return res.status(403).json({ message: 'token_not_found' });
+    }
     const realToken = await isAuth(token!);
     const decode: any = jwt.verify(realToken, key!);
-    if(decode.role != 'admin'){
-      return res.status(403).json({message: 'unauthorized'});
+    if (decode.type != 'Admin') {
+      return res.status(401).json({ message: 'unauthorized' });
     }
     return next();
   } catch (error) {
-    return res.status(500).json({message: 'internal_error'});
+    console.log(error);
+    return res.status(500).json({ message: 'internal_error' });
   }
-  
+
 }
 
 async function isAuth(token: string) {

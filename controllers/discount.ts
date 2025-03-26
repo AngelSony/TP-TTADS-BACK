@@ -32,16 +32,14 @@ const discountController = {
     try {
       const result = validateDiscount(req.body);
       if (!result.success) {
-        // 422 Unprocessable Entity
         return res
           .status(400)
           .json({ error: JSON.parse(result.error.message) });
       }
-      //VALIDAR CON MODEL
       const savedDiscount = await discountReposirory.add(req.body);
       res
         .status(201)
-        .json({ message: "Discount created", data: savedDiscount });
+        .json({ message: "discount_created", data: savedDiscount });
     } catch (error) {
       res.status(500).json(error);
     }

@@ -8,7 +8,7 @@ import adminUserRouter from "./user.js";
 const adminRoutes = Router();
 
 
-adminRoutes.use("/category", adminCategoryRouter);
+adminRoutes.use("/categories", adminCategoryRouter);
 adminRoutes.use("/discount", adminDiscountRouter);
 adminRoutes.use("/payment_type", adminPaymentTypeRouter);
 adminRoutes.use("/seller", adminSellerRouter);

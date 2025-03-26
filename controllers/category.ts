@@ -23,7 +23,7 @@ const categoryController = {
       const id = req.params.id;
       const category = await categoryRepository.findOne({ id });
       if (!category) {
-        return res.status(404).json({ error: "Category not found" });
+        return res.status(404).json({ error: "category_not_found" });
       }
 
       res.status(200).json(category);
@@ -36,16 +36,14 @@ const categoryController = {
     try {
       const result = validateCategory(req.body);
       if (!result.success) {
-        // 422 Unprocessable Entity
         return res
-          .status(400)
+          .status(422)
           .json({ error: JSON.parse(result.error.message) });
       }
-      //VALIDAR CON MODEL
       const savedCategory = await categoryRepository.add(req.body);
       res
         .status(201)
-        .json({ message: "Category created", data: savedCategory });
+        .json({ message: "category_created", data: savedCategory });
     } catch (error) {
       res.status(500).json(error);
     }

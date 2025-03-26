@@ -8,6 +8,6 @@ adminDiscountRouter.get("/", DiscountController.getAllDiscounts);
 adminDiscountRouter.post("/", DiscountController.createDiscount);
 adminDiscountRouter.get("/:id", DiscountController.getDiscountById);
 adminDiscountRouter.delete("/:id", DiscountController.deleteDiscountById);
-adminDiscountRouter.patch("/:id", DiscountController.updateDiscountById);
+adminDiscountRouter.put("/:id", DiscountController.updateDiscountById);
 
 export default adminDiscountRouter;

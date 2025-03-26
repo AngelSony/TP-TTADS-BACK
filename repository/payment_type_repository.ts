@@ -7,7 +7,7 @@ import IPaymentType from "../types/IPaymentType.js";
 
 export class PaymentTypeRepository implements Repository<IPaymentType> {
   public async findAll(): Promise<IPaymentType[] | undefined> {
-    return await PaymentType.find({ state: "Active" });
+    return await PaymentType.find();
   }
 
   public async findOne(item: {
@@ -32,7 +32,6 @@ export class PaymentTypeRepository implements Repository<IPaymentType> {
       (await PaymentType.findOneAndUpdate(
         {
           _id: id,
-          state: "Active",
         },
         paymentType,
         { new: true },
