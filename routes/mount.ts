@@ -8,9 +8,9 @@ import { isAdmin, isSeller, isUser } from "../middlewares/auth_middleware.js";
 const apiRouter = Router();
 
 
-apiRouter.use("/admin", isAdmin,adminRoutes);
-apiRouter.use("/user",isUser, userRoutes);
-apiRouter.use ("/seller", isSeller,sellerRoutes);
-apiRouter.use ("/public", publicRoutes);
+apiRouter.use("/admin", isAdmin, adminRoutes);
+apiRouter.use("/user", isUser, userRoutes);
+apiRouter.use("/seller", isSeller, sellerRoutes);
+apiRouter.use("/public", publicRoutes);
 
 export default apiRouter;

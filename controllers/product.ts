@@ -38,8 +38,9 @@ const ProductController = {
           .status(400)
           .json({ error: JSON.parse(result.error.message) });
       }
-      const order = { ...req.body, seller_id: req.user?._id };
-      const serviceResult = await ProductService.create(order);
+
+      const product = { ...req.body, seller_id: req.user?._id };
+      const serviceResult = await ProductService.create(product);
       if (!serviceResult.success) {
         return res.status(400).json({ error: serviceResult.message });
       }

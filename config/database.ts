@@ -1,16 +1,21 @@
-import mongoose, { Connection } from "mongoose";
+import mongoose from "mongoose";
 
-console.log("a");
-// URL de conexión a la base de datos. Cambia esto según tu configuración.
-// Configuración de la conexión a la base de datos
+const connectDB = async () => {
+  try {
+    await mongoose.connect('mongodb://admin:password@localhost:27017/MarketPlace?authSource=admin');
+    console.log("mongo_db_connected_sucessfully");
+  } catch (err) {
+    console.error("error_connecting_mongodb", err);
+    process.exit(1);
+  }
+};
 
-mongoose.connect('mongodb://admin:password@localhost:27017/MarketPlace?authSource=admin').then(() => console.log('Conectado a MongoDB Local'))
-.catch(err => console.error('Error al conectar', err));
-const db: Connection = mongoose.connection;
-
-db.on("error", console.error.bind(console, "Error de conexión a MongoDB:"));
-db.once("open", () => {
-  console.log("Conexión exitosa a la base de datos MongoDB");
+mongoose.connection.on("error", (err) => {
+  console.error("error_connecting_mongo_db", err);
 });
 
-export default db;
+mongoose.connection.once("open", () => {
+  console.log("mongo_db_connected");
+});
+
+export default connectDB;

@@ -40,12 +40,12 @@ const ReviewController = {
           .json({ error: JSON.parse(result.error.message) });
       }
       const isAppropriateComment: string = await isAppropriate(req.body.comment);
-      console.log(isAppropriateComment); 
+      console.log(isAppropriateComment);
       console.log(req.body.comment);
       if (isAppropriateComment === 'true') {
         const savedReview = await reviewRepository.add(req.body);
         res.status(201).json({ message: "Review created", data: savedReview });
-      }else{
+      } else {
         return res.status(400).json({ error: "Review contains inappropriate language" });
       }
     } catch (error) {
@@ -68,6 +68,7 @@ const ReviewController = {
       res.status(500).json(error);
     }
   },
+
   deleteReviewById: async (req: Request, res: Response) => {
     try {
       const reviewDeleted = await reviewRepository.delete({
