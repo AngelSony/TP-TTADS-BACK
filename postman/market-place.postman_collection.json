@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "520324b9-5bba-4bae-af44-dd6f26ccdb69",
+		"name": "market-place",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43146772"
+	},
+	"item": [
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "get_categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlcGl0b0BnbWFpbC5jb20iLCJfaWQiOiI2N2UwMmQzMmQ5NWNkZmU0MGI0YzBlMDYiLCJ1c2VybmFtZSI6InVzZXJwZXBlIiwidHlwZSI6IkFkbWluIiwiYWRkcmVzcyI6ImFsZ28xMjMiLCJzdGF0ZSI6IkFjdGl2ZSIsImlhdCI6MTc0Mjk0ODY4MCwiZXhwIjoxNzQyOTU5NDgwfQ.RR4G4HvpJQzBjZHDV2_OGz9GrakQi7F7T5_B9uxgKVA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/admin/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlcGl0b0BnbWFpbC5jb20iLCJfaWQiOiI2N2UwMmQzMmQ5NWNkZmU0MGI0YzBlMDYiLCJ1c2VybmFtZSI6InVzZXJwZXBlIiwidHlwZSI6IkFkbWluIiwiYWRkcmVzcyI6ImFsZ28xMjMiLCJzdGF0ZSI6IkFjdGl2ZSIsImlhdCI6MTc0Mjk0ODY4MCwiZXhwIjoxNzQyOTU5NDgwfQ.RR4G4HvpJQzBjZHDV2_OGz9GrakQi7F7T5_B9uxgKVA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/admin/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/admin/categories/67e34a9e50a01921b06759e8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"categories",
+								"67e34a9e50a01921b06759e8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_by_id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/admin/categories/67e34a9e50a01921b06759e8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"categories",
+								"67e34a9e50a01921b06759e8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlcGl0b0BnbWFpbC5jb20iLCJfaWQiOiI2N2UwMmQzMmQ5NWNkZmU0MGI0YzBlMDYiLCJ1c2VybmFtZSI6InVzZXJwZXBlIiwidHlwZSI6IkFkbWluIiwiYWRkcmVzcyI6ImFsZ28xMjMiLCJzdGF0ZSI6IkFjdGl2ZSIsImlhdCI6MTc0Mjk0ODY4MCwiZXhwIjoxNzQyOTU5NDgwfQ.RR4G4HvpJQzBjZHDV2_OGz9GrakQi7F7T5_B9uxgKVA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"state\": \"Active\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/categories/67e34a9e50a01921b06759e8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"categories",
+								"67e34a9e50a01921b06759e8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payment_type",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlcGl0b0BnbWFpbC5jb20iLCJfaWQiOiI2N2UwMmQzMmQ5NWNkZmU0MGI0YzBlMDYiLCJ1c2VybmFtZSI6InVzZXJwZXBlIiwidHlwZSI6IkFkbWluIiwiYWRkcmVzcyI6ImFsZ28xMjMiLCJzdGF0ZSI6IkFjdGl2ZSIsImlhdCI6MTc0Mjk0ODY4MCwiZXhwIjoxNzQyOTU5NDgwfQ.RR4G4HvpJQzBjZHDV2_OGz9GrakQi7F7T5_B9uxgKVA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"credit card\",\n    \"state\":\"Active\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/payment_type",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"payment_type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payment_type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/admin/payment_type",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"payment_type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_payment_type_by_id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlcGl0b0BnbWFpbC5jb20iLCJfaWQiOiI2N2UwMmQzMmQ5NWNkZmU0MGI0YzBlMDYiLCJ1c2VybmFtZSI6InVzZXJwZXBlIiwidHlwZSI6IkFkbWluIiwiYWRkcmVzcyI6ImFsZ28xMjMiLCJzdGF0ZSI6IkFjdGl2ZSIsImlhdCI6MTc0Mjk0ODY4MCwiZXhwIjoxNzQyOTU5NDgwfQ.RR4G4HvpJQzBjZHDV2_OGz9GrakQi7F7T5_B9uxgKVA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/admin/payment_type/67e34d4d813f4f7a56f7a373",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"payment_type",
+								"67e34d4d813f4f7a56f7a373"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_payment_type",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlcGl0b0BnbWFpbC5jb20iLCJfaWQiOiI2N2UwMmQzMmQ5NWNkZmU0MGI0YzBlMDYiLCJ1c2VybmFtZSI6InVzZXJwZXBlIiwidHlwZSI6IkFkbWluIiwiYWRkcmVzcyI6ImFsZ28xMjMiLCJzdGF0ZSI6IkFjdGl2ZSIsImlhdCI6MTc0Mjk0ODY4MCwiZXhwIjoxNzQyOTU5NDgwfQ.RR4G4HvpJQzBjZHDV2_OGz9GrakQi7F7T5_B9uxgKVA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/admin/payment_type/67e34d4d813f4f7a56f7a373",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"payment_type",
+								"67e34d4d813f4f7a56f7a373"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_payment_type",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlcGl0b0BnbWFpbC5jb20iLCJfaWQiOiI2N2UwMmQzMmQ5NWNkZmU0MGI0YzBlMDYiLCJ1c2VybmFtZSI6InVzZXJwZXBlIiwidHlwZSI6IkFkbWluIiwiYWRkcmVzcyI6ImFsZ28xMjMiLCJzdGF0ZSI6IkFjdGl2ZSIsImlhdCI6MTc0Mjk0ODY4MCwiZXhwIjoxNzQyOTU5NDgwfQ.RR4G4HvpJQzBjZHDV2_OGz9GrakQi7F7T5_B9uxgKVA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"state\":\"Active\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/admin/payment_type/67e34d4d813f4f7a56f7a373",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"admin",
+								"payment_type",
+								"67e34d4d813f4f7a56f7a373"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBlcGl0b0BnbWFpbC5jb20iLCJfaWQiOiI2N2UwMmQzMmQ5NWNkZmU0MGI0YzBlMDYiLCJ1c2VybmFtZSI6InVzZXJwZXBlIiwidHlwZSI6IlVzZXIiLCJhZGRyZXNzIjoiYWxnbzEyMyIsInN0YXRlIjoiQWN0aXZlIiwiaWF0IjoxNzQyNzQ4NTEyLCJleHAiOjE3NDI3NTkzMTJ9.-T8PJwVHMXpcZV4KLZzwMpq70jZOZnllTuHvgcT7hk4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/user/cart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "seller",
+			"item": []
+		},
+		{
+			"name": "public",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"pepito@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/public/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"userpepe\",\n    \"email\":\"pepito@gmail.com\",\n    \"password\":\"123456\",\n    \"address\":\"algo123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/public/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"public",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
